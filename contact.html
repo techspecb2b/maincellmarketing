@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Main Cell Marketing</title>
+  <meta name="description" content="Get in touch with Main Cell Marketing. Request a quote for social media marketing, print, design, or web services.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--cyan:#00D4FF;--cyan-dark:#00B8E6;--orange:#FF6B35;--black:#111;--dark-gray:#1a1a1a;--light-gray:#f5f5f5}
+    body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,var(--cyan) 0%,#0099cc 50%,var(--orange) 100%);min-height:100vh;color:var(--black)}
+    h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:800}
+
+    .nav{background:var(--cyan);padding:12px 0;position:fixed;top:0;width:100%;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.3)}.nav-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 50px}.nav .logo{display:flex;align-items:center}.nav .logo .desktop-logo{height:55px}.nav .logo .mobile-logo{height:40px;display:none}.nav nav{display:flex;align-items:center;gap:8px}.nav nav a{color:white;font-weight:600;text-decoration:none;padding:10px 18px;border-radius:50px;transition:all 0.3s;font-size:14px}.nav nav a:hover,.nav nav a.active{background:rgba(255,255,255,0.2)}.nav nav a.order-btn{background:white;color:var(--cyan);font-weight:800;padding:10px 22px}.nav nav a.order-btn:hover{background:#e6f9ff;transform:scale(1.05)}.menu-toggle{display:none;background:none;border:none;color:white;font-size:26px;cursor:pointer}.menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:998}.menu-overlay.active{display:block}.side-menu{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--dark-gray);z-index:999;transition:right 0.3s;padding:80px 25px 25px}.side-menu.active{right:0}.side-menu a{display:block;color:white;padding:15px 0;font-size:16px;font-weight:600;border-bottom:1px solid #333;text-decoration:none}.side-menu a.order-link{color:var(--cyan);background:white;text-align:center;border-radius:8px;margin-top:15px;font-weight:800}@media(max-width:900px){.menu-toggle{display:block}.nav nav{display:none}.nav-inner{padding:0 20px}.nav .logo .desktop-logo{display:none}.nav .logo .mobile-logo{display:block}}
+
+    .page-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 60px}
+    .form-wrapper{max-width:900px;width:100%}
+    .form-header{text-align:center;color:white;margin-bottom:40px}
+    .form-header h1{font-size:clamp(32px,5vw,52px);margin-bottom:15px;text-shadow:0 4px 20px rgba(0,0,0,0.3)}
+    .form-header p{font-size:18px;opacity:0.95}
+
+    .order-form{background:white;border-radius:28px;padding:50px;box-shadow:0 30px 100px rgba(0,0,0,0.4)}
+    @media(max-width:600px){.order-form{padding:30px 20px;border-radius:20px}}
+
+    .progress-bar{display:flex;justify-content:space-between;margin-bottom:45px;position:relative}
+    .progress-bar::before{content:'';position:absolute;top:22px;left:10%;right:10%;height:4px;background:#eee;border-radius:2px}
+    .progress-bar::after{content:'';position:absolute;top:22px;left:10%;height:4px;background:var(--cyan);border-radius:2px;transition:width 0.4s;width:0%}
+    .progress-bar.step-2::after{width:40%}
+    .progress-bar.step-3::after{width:80%}
+    .progress-step{text-align:center;position:relative;z-index:1;flex:1}
+    .progress-step .num{width:48px;height:48px;background:#eee;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:800;font-size:18px;color:#999;transition:all 0.3s}
+    .progress-step.active .num{background:var(--cyan);color:white;box-shadow:0 5px 20px rgba(0,212,255,0.4)}
+    .progress-step.done .num{background:#00b894;color:white}
+    .progress-step .label{font-size:13px;font-weight:600;color:#999}
+    .progress-step.active .label,.progress-step.done .label{color:var(--black)}
+
+    .form-step{display:none}
+    .form-step.active{display:block;animation:fadeIn 0.4s}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .svc-opt input{display:none}
+    .svc-opt label{display:flex;flex-direction:column;align-items:center;padding:40px 25px;background:var(--light-gray);border-radius:20px;cursor:pointer;border:3px solid transparent;transition:all 0.3s}
+    .svc-opt label i{font-size:50px;color:var(--cyan);margin-bottom:15px;transition:transform 0.3s}
+    .svc-opt label span{font-weight:800;font-size:18px}
+    .svc-opt label small{font-size:13px;color:#888;margin-top:5px}
+    .svc-opt input:checked+label{border-color:var(--cyan);background:white;box-shadow:0 15px 40px rgba(0,212,255,0.15);transform:scale(1.02)}
+    .svc-opt input:checked+label i{transform:scale(1.1)}
+    @media(max-width:600px){.service-grid{grid-template-columns:1fr}.svc-opt label{padding:30px 20px}.svc-opt label i{font-size:40px}}
+
+    .step-title{font-size:22px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+    .step-title i{color:var(--cyan)}
+    .step-subtitle{color:#888;margin-bottom:25px;font-size:15px}
+
+    .form-group{margin-bottom:20px}
+    .form-group label{display:block;font-weight:600;margin-bottom:8px;font-size:14px;color:#333}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:16px 20px;border:2px solid #eee;border-radius:12px;font-size:15px;font-family:inherit;transition:all 0.3s}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 4px rgba(0,212,255,0.1)}
+    .form-group textarea{min-height:120px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+    .btn-row{display:flex;gap:15px;margin-top:30px;flex-wrap:wrap}
+    .btn{flex:1;min-width:140px;padding:18px 30px;border:none;border-radius:50px;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.3s;text-decoration:none}
+    .btn-back{background:#eee;color:#666}
+    .btn-back:hover{background:#ddd}
+    .btn-next,.btn-submit{background:var(--cyan);color:white;box-shadow:0 10px 30px rgba(0,212,255,0.3)}
+    .btn-next:hover,.btn-submit:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,212,255,0.4)}
+
+    .success-msg{display:none;text-align:center;padding:60px 20px}
+    .success-msg.show{display:block}
+    .success-msg i.fa-check-circle{font-size:80px;color:white;background:var(--cyan);width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;box-shadow:0 10px 30px rgba(0,212,255,0.3)}
+    .success-msg h2{font-size:32px;margin-bottom:15px}
+    .success-msg p{color:#666;font-size:16px;margin-bottom:30px}
+    .success-msg .btn-row{justify-content:center}
+    .success-msg .btn{flex:0 1 auto;min-width:160px;max-width:220px}
+    .success-msg .btn i{color:white}
+    @media(max-width:500px){.success-msg .btn-row{flex-direction:column;align-items:center}.success-msg .btn{width:100%;max-width:280px}}
+
+    .contact-info{max-width:900px;margin:40px auto 0;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+    .contact-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.9);font-size:14px}
+    .contact-item i{font-size:18px}
+    .contact-item a{color:white;text-decoration:none}
+
+    footer{background:rgba(0,0,0,0.2);color:rgba(255,255,255,0.7);padding:25px;text-align:center;font-size:13px}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><img src="logo.png" alt="Main Cell Marketing" class="desktop-logo"><img src="logo.png" alt="Main Cell Marketing" class="mobile-logo"></a>
+      <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+      <nav><a href="index.html">Home</a><a href="marketing.html">Marketing</a><a href="print.html">Print</a><a href="design.html">Design</a><a href="web.html">Web</a><a href="contact.html" class="order-btn active"><i class="fas fa-paper-plane"></i> Contact</a></nav>
+    </div>
+  </header>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="side-menu" id="sideMenu"><a href="index.html">Home</a><a href="marketing.html">Marketing</a><a href="print.html">Print</a><a href="design.html">Design</a><a href="web.html">Web</a><a href="contact.html" class="order-link"><i class="fas fa-paper-plane"></i> Contact Us</a></div>
+
+  <div class="page-container">
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h1>Let's Work Together</h1>
+        <p>Tell us what you need and we'll get back to you within 24 hours</p>
+      </div>
+
+      <div class="order-form">
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-step active"><div class="num">1</div><div class="label">Service</div></div>
+          <div class="progress-step"><div class="num">2</div><div class="label">Details</div></div>
+          <div class="progress-step"><div class="num">3</div><div class="label">Info</div></div>
+        </div>
+
+        <form id="contactForm">
+          <input type="hidden" name="subject" value="New Request from Main Cell Marketing Website">
+          <input type="hidden" name="from_name" value="Main Cell Marketing Contact Form">
+
+          <div class="form-step active" id="step1">
+            <h3 class="step-title"><i class="fas fa-concierge-bell"></i> What do you need?</h3>
+            <p class="step-subtitle">Select the service you're interested in</p>
+            <div class="service-grid">
+              <div class="svc-opt"><input type="radio" name="service" id="s-marketing" value="Marketing Services"><label for="s-marketing"><i class="fas fa-bullhorn"></i><span>Marketing</span><small>Social media, ads & management</small></label></div>
+              <div class="svc-opt"><input type="radio" name="service" id="s-print" value="Print Services"><label for="s-print"><i class="fas fa-print"></i><span>Print</span><small>Cards, banners, signs & more</small></label></div>
+              <div class="svc-opt"><input type="radio" name="service" id="s-design" value="Design Services"><label for="s-design"><i class="fas fa-palette"></i><span>Design</span><small>Logos, branding & graphics</small></label></div>
+              <div class="svc-opt"><input type="radio" name="service" id="s-web" value="Web Services"><label for="s-web"><i class="fas fa-globe"></i><span>Web</span><small>Websites & landing pages</small></label></div>
+            </div>
+            <div class="btn-row"><button type="button" class="btn btn-next" onclick="nextStep(2)">Continue <i class="fas fa-arrow-right"></i></button></div>
+          </div>
+
+          <div class="form-step" id="step2">
+            <h3 class="step-title"><i class="fas fa-clipboard-list"></i> Project details</h3>
+            <p class="step-subtitle">Tell us more about what you're looking for</p>
+            <div class="form-group"><label for="projectType">What do you need? *</label><input type="text" id="projectType" name="project_type" placeholder="e.g., Social media management, 500 business cards, logo design..." required></div>
+            <div class="form-group"><label for="projectDetails">Additional details (optional)</label><textarea id="projectDetails" name="project_details" placeholder="Any specific requirements, colors, ideas..."></textarea></div>
+            <div class="form-row">
+              <div class="form-group"><label>Timeline</label><select id="timeline" name="timeline"><option value="">Select timeline</option><option value="ASAP">ASAP (rush may apply)</option><option value="1-2 weeks">1-2 weeks</option><option value="1 month">Within a month</option><option value="Flexible">Flexible / No rush</option></select></div>
+              <div class="form-group"><label>Budget Range</label><select id="budget" name="budget"><option value="">Select budget</option><option value="Under $250">Under $250</option><option value="$250-$500">$250 - $500</option><option value="$500-$1000">$500 - $1,000</option><option value="$1000-$2500">$1,000 - $2,500</option><option value="$2500+">$2,500+</option><option value="Not sure">Not sure yet</option></select></div>
+            </div>
+            <div class="btn-row"><button type="button" class="btn btn-back" onclick="prevStep(1)"><i class="fas fa-arrow-left"></i> Back</button><button type="button" class="btn btn-next" onclick="nextStep(3)">Continue <i class="fas fa-arrow-right"></i></button></div>
+          </div>
+
+          <div class="form-step" id="step3">
+            <h3 class="step-title"><i class="fas fa-user"></i> Your information</h3>
+            <p class="step-subtitle">How can we reach you?</p>
+            <div class="form-row">
+              <div class="form-group"><label>First Name *</label><input type="text" id="firstName" name="first_name" required></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" name="last_name" required></div>
+            </div>
+            <div class="form-group"><label>Email Address *</label><input type="email" id="email" name="email" required></div>
+            <div class="form-row">
+              <div class="form-group"><label>Phone (optional)</label><input type="tel" id="phone" name="phone"></div>
+              <div class="form-group"><label>Business Name (optional)</label><input type="text" id="business" name="business"></div>
+            </div>
+            <div class="btn-row"><button type="button" class="btn btn-back" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Back</button><button type="submit" class="btn btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Request</button></div>
+          </div>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          <i class="fas fa-check-circle"></i>
+          <h2>Request Sent!</h2>
+          <p>Thanks for reaching out! We'll review your request and get back to you within 24 hours.</p>
+          <div class="btn-row">
+            <a href="index.html" class="btn btn-next"><i class="fas fa-home"></i> Back to Home</a>
+            <button type="button" class="btn btn-next" onclick="resetForm()"><i class="fas fa-plus"></i> New Request</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:4232862355">(423) 286-2355</a></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:maincellmarketing@gmail.com">maincellmarketing@gmail.com</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Oneida, TN</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Main Cell Marketing. All rights reserved.</footer>
+
+  <script>
+    function toggleMenu(){document.getElementById('sideMenu').classList.toggle('active');document.getElementById('menuOverlay').classList.toggle('active')}
+    
+    var progressBar=document.getElementById('progressBar');
+    var steps=document.querySelectorAll('.progress-step');
+    var currentStep=1;
+    
+    var urlParams=new URLSearchParams(window.location.search);
+    var urlService=urlParams.get('service');
+    if(urlService){
+      var map={print:'s-print',design:'s-design',marketing:'s-marketing',web:'s-web'};
+      var el=document.getElementById(map[urlService]);
+      if(el)el.checked=true;
+    }
+    
+    function updateProgress(){
+      progressBar.className='progress-bar step-'+currentStep;
+      for(var i=0;i<steps.length;i++){
+        steps[i].classList.remove('active','done');
+        if(i+1<currentStep)steps[i].classList.add('done');
+        if(i+1===currentStep)steps[i].classList.add('active');
+      }
+    }
+    
+    function showStep(n){
+      var allSteps=document.querySelectorAll('.form-step');
+      for(var i=0;i<allSteps.length;i++){allSteps[i].classList.remove('active')}
+      document.getElementById('step'+n).classList.add('active');
+      currentStep=n;
+      updateProgress();
+    }
+    
+    function nextStep(n){
+      if(currentStep===1){
+        if(!document.querySelector('input[name="service"]:checked')){alert('Please select a service');return}
+      }
+      if(currentStep===2){
+        if(!document.getElementById('projectType').value.trim()){alert('Please tell us what you need');return}
+      }
+      showStep(n);
+    }
+    
+    function prevStep(n){showStep(n)}
+    
+    var form=document.getElementById('contactForm');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=document.getElementById('submitBtn');
+      btn.disabled=true;
+      btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
+      
+      var serviceEl=document.querySelector('input[name="service"]:checked');
+      var selectedService=serviceEl?serviceEl.value:'Not specified';
+      var projectType=document.getElementById('projectType').value;
+      var projectDetails=document.getElementById('projectDetails').value;
+      var firstName=document.getElementById('firstName').value;
+      var lastName=document.getElementById('lastName').value;
+      var email=document.getElementById('email').value;
+      var phone=document.getElementById('phone').value;
+      var business=document.getElementById('business').value;
+      
+      var cardName=selectedService+': '+firstName+' '+lastName+(business?' ('+business+')':'');
+      var cardDesc='**Service:** '+selectedService+'\n**Project Type:** '+projectType+'\n**Timeline:** '+(document.getElementById('timeline').value||'Not specified')+'\n**Budget:** '+(document.getElementById('budget').value||'Not specified')+'\n\n**Details:**\n'+(projectDetails||'None provided')+'\n\n---\n**Contact Info:**\n- Name: '+firstName+' '+lastName+'\n- Email: '+email+'\n- Phone: '+(phone||'Not provided')+'\n- Business: '+(business||'Not provided');
+      
+      // Trello API - UPDATE listId with Main Cell Marketing board list ID
+      var trelloKey='3ea0ef2b85773186d7ae30322ae1782d';
+      var trelloToken='ATTAde902321af1ec6600e16a0587516fb0b68cff7d5ce58997aa165fc08ba35568217827FB6';
+      var listId='REPLACE_WITH_MAINCELL_LIST_ID'; // <-- Send me the Trello board list ID when ready
+      
+      var url='https://api.trello.com/1/cards?idList='+listId+'&key='+trelloKey+'&token='+trelloToken+'&name='+encodeURIComponent(cardName)+'&desc='+encodeURIComponent(cardDesc)+'&pos=top';
+      
+      fetch(url,{method:'POST'})
+        .then(function(response){
+          if(response.ok){
+            document.getElementById('progressBar').style.display='none';
+            var formSteps=document.querySelectorAll('.form-step');
+            for(var i=0;i<formSteps.length;i++){formSteps[i].style.display='none'}
+            document.getElementById('successMsg').classList.add('show');
+          }else{
+            throw new Error('Failed');
+          }
+        })
+        .catch(function(err){
+          btn.disabled=false;
+          btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Request';
+          alert('Something went wrong. Please call us at (423) 286-2355 or email maincellmarketing@gmail.com');
+        });
+    });
+    
+    function resetForm(){
+      form.reset();
+      document.getElementById('progressBar').style.display='flex';
+      var formSteps=document.querySelectorAll('.form-step');
+      for(var i=0;i<formSteps.length;i++){formSteps[i].style.display='block'}
+      document.getElementById('successMsg').classList.remove('show');
+      showStep(1);
+      document.getElementById('submitBtn').disabled=false;
+      document.getElementById('submitBtn').innerHTML='<i class="fas fa-paper-plane"></i> Send Request';
+    }
+  </script>
+</body>
+</html>
